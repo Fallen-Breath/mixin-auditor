@@ -37,16 +37,19 @@ You can create a new loom run config for better integration with your gradle pro
 
 ```gradle
 loom {
-	runs {
-		serverMixinAudit {
-			server()
-			vmArgs '-DmixinAuditor.audit=true'
-		}
-		clientMixinAudit {
-			client()
-			vmArgs('-DmixinAuditor.audit=true', '-DmixinAuditor.when=game_init')  // if you need multiple arguments
-		}
-	}
+    runs {
+        // run server, but with mixin auditor enabled
+        serverMixinAudit {
+            server()
+            vmArgs '-DmixinAuditor.audit=true'
+        }
+        
+        // run client, but with mixin auditor enabled
+        clientMixinAudit {
+            client()
+            vmArgs('-DmixinAuditor.audit=true', '-DmixinAuditor.when=game_init')
+        }
+    }
 }
 ```
 
@@ -54,6 +57,7 @@ Then you can use the following gradle command to launch Minecraft server with mi
 
 ```bash
 gradle runServerMixinAudit
+gradle runClientMixinAudit
 ```
 
 ## Config
