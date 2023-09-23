@@ -3,7 +3,7 @@
   "package": "me.fallenbreath.mixinauditor.mixins",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "MinecraftServerMixin"
+    "MinecraftDedicatedServerMixin"
   ],
   "client": [
     "MinecraftClientMixin"

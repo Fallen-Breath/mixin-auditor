@@ -15,12 +15,9 @@ public class Once implements Runnable
 	@Override
 	public void run()
 	{
-		if (!this.done.get())
+		if (this.done.compareAndSet(false, true))
 		{
-			if (this.done.compareAndSet(false, true))
-			{
-				this.delegate.run();
-			}
+			this.delegate.run();
 		}
 	}
 }
