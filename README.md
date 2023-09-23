@@ -6,6 +6,8 @@ A tiny mod to automatically trigger a `MixinEnvironment.getCurrentEnvironment().
 
 It is available at [my maven](https://maven.fallenbreath.me/#/releases/me/fallenbreath/mixin-auditor)
 
+It requires no dependencies, and should work in all Minecraft versions >= 1.14
+
 ## Usages
 
 ### Import
@@ -39,7 +41,10 @@ loom {
 		serverMixinAudit {
 			server()
 			vmArgs '-DmixinAuditor.audit=true'
-			// ideConfigGenerated false  // optional, to not generate run config for IDE
+		}
+		clientMixinAudit {
+			client()
+			vmArgs('-DmixinAuditor.audit=true', '-DmixinAuditor.when=game_init')  // if you need multiple arguments
 		}
 	}
 }

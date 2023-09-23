@@ -27,7 +27,8 @@ loom {
 		}
 		clientMixinAudit {
 			client()
-			vmArgs '-DmixinAuditor.audit=true'
+			vmArgs('-DmixinAuditor.audit=true', '-DmixinAuditor.when=game_init')
+			ideConfigGenerated = false
 		}
 	}
 	runConfigs.configureEach {
