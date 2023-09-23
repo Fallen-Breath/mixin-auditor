@@ -31,6 +31,13 @@ Run Minecraft with system property `-DmixinAuditor.audit=true`, and mixin audito
 Yeah, not with config file / API, cuz it's designed for development / CI environment, not for users in production
 environment
 
+Here's a simple examples to launch the server with mixin auditor enabled
+
+```bash
+export JAVA_TOOL_OPTIONS="$JAVA_TOOL_OPTIONS -DmixinAuditor.audit=true"
+./gradlew runServer
+```
+
 ### Loom
 
 You can create a new loom run config for better integration with your gradle project
@@ -56,8 +63,8 @@ loom {
 Then you can use the following gradle command to launch Minecraft server with mixin auditor enabled:
 
 ```bash
-gradle runServerMixinAudit
-gradle runClientMixinAudit
+./gradlew runServerMixinAudit
+./gradlew runClientMixinAudit
 ```
 
 ## Config
