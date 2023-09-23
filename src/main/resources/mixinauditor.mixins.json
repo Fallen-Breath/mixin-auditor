@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "package": "me.fallenbreath.mixinauditor.mixins",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "MinecraftServerMixin"
+  ],
+  "client": [
+    "MinecraftClientMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

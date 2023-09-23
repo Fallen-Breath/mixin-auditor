@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "mixin-auditor",
+  "version": "${version}",
+
+  "name": "Mixin Auditor",
+  "description": "TA tiny mod to automatically trigger a `MixinEnvironment.getCurrentEnvironment().audit()` on Minecraft launch\n",
+  "authors": [
+    "Fallen_Breath"
+  ],
+  "contact": {
+    "homepage": "https://github.com/Fallen-Breath/mixin-auditor",
+    "sources": "https://github.com/Fallen-Breath/mixin-auditor"
+  },
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "me.fallenbreath.mixinauditor.MixinAuditorMod"
+    ]
+  },
+  "mixins": [
+    "mixinauditor.mixins.json"
+  ],
+  "depends": {
+  },
+  "custom": {
+    "modmenu:api": true,
+    "modmenu": {
+      "badges": [
+        "library"
+      ]
+    }
+  }
+}
