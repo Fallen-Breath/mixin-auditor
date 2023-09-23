@@ -10,7 +10,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(MinecraftServer.class)
 public abstract class MinecraftServerMixin
 {
-	@Inject(method = "loadWorld", at = @At("HEAD"))
+	@Inject(
+			method = "run",
+			at = @At(
+					value = "INVOKE",
+					target = "Lnet/minecraft/server/MinecraftServer;setupServer()Z",
+					shift = At.Shift.AFTER
+			)
+	)
 	private void onServerInitHook(CallbackInfo ci)
 	{
 		MinecraftServer self = (MinecraftServer)(Object)this;
