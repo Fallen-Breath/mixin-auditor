@@ -2,7 +2,7 @@
 
 [![maven badge](https://maven.fallenbreath.me/api/badge/latest/releases/me/fallenbreath/mixin-auditor)](https://maven.fallenbreath.me/#/releases/me/fallenbreath/mixin-auditor)
 
-A tiny mod to automatically trigger a `MixinEnvironment.getCurrentEnvironment().audit()` on Minecraft launch
+A tiny fabric mod to automatically trigger a `MixinEnvironment.getCurrentEnvironment().audit()` on Minecraft launch
 
 It is available at [my maven](https://maven.fallenbreath.me/#/releases/me/fallenbreath/mixin-auditor)
 
@@ -14,11 +14,15 @@ It requires no dependencies, and should work in all Minecraft versions >= 1.14
 
 ```groovy
 repositories {
-    maven { url 'https://maven.fallenbreath.me/releases' }
+    maven { url = 'https://maven.fallenbreath.me/releases' }
 }
 
 dependencies {
-    modRuntimeOnly 'me.fallenbreath:mixin-auditor:0.1.0'
+    // obfuscated Minecraft versions (MC < 26.1): 
+    modRuntimeOnly 'me.fallenbreath:mixin-auditor:0.1.0-o'
+
+    // unobfuscated Minecraft versions (MC >= 26.1): 
+    runtimeOnly 'me.fallenbreath:mixin-auditor:0.1.0-u'
 }
 ```
 
