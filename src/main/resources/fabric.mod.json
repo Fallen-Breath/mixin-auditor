@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "mixin-auditor",
+  "id": "${id}",
   "version": "${version}",
 
   "name": "Mixin Auditor",
