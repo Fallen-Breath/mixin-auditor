@@ -19,10 +19,10 @@ repositories {
 
 dependencies {
     // obfuscated Minecraft versions (MC < 26.1): 
-    modRuntimeOnly 'me.fallenbreath:mixin-auditor:0.1.0-o'
+    modRuntimeOnly 'me.fallenbreath:mixin-auditor:0.2.0-o'
 
     // unobfuscated Minecraft versions (MC >= 26.1): 
-    runtimeOnly 'me.fallenbreath:mixin-auditor:0.1.0-u'
+    runtimeOnly 'me.fallenbreath:mixin-auditor:0.2.0-u'
 }
 ```
 
