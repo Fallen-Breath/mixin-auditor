@@ -28,10 +28,10 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(DedicatedServer.class)
-public abstract class MinecraftDedicatedServerMixin
+public abstract class DedicatedServerMixin
 {
 	@Inject(method = "initServer()Z", at = @At("RETURN"))
-	private void onServerInitHook(CallbackInfoReturnable<Boolean> cir)
+	private void onDedicatedServerInitHook(CallbackInfoReturnable<Boolean> cir)
 	{
 		Boolean initOk = cir.getReturnValue();
 		if (initOk)

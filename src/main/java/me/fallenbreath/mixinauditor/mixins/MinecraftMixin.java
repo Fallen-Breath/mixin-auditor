@@ -28,7 +28,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(Minecraft.class)
-public abstract class MinecraftClientMixin
+public abstract class MinecraftMixin
 {
 	@Inject(
 			method = "run",
@@ -37,7 +37,7 @@ public abstract class MinecraftClientMixin
 					target = "Lnet/minecraft/client/Minecraft;runTick(Z)V"
 			)
 	)
-	private void onServerInitHook(CallbackInfo ci)
+	private void onClientInitHook(CallbackInfo ci)
 	{
 		GameInitHook.onGameInit();
 	}

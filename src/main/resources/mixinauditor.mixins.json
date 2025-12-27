@@ -3,10 +3,10 @@
   "package": "me.fallenbreath.mixinauditor.mixins",
   "compatibilityLevel": "{{COMPATIBILITY_LEVEL}}",
   "mixins": [
-    "MinecraftDedicatedServerMixin"
+    "DedicatedServerMixin"
   ],
   "client": [
-    "MinecraftClientMixin"
+    "MinecraftMixin"
   ],
   "injectors": {
     "defaultRequire": 1
