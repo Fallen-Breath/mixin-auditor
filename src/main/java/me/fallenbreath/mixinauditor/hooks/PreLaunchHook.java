@@ -2,7 +2,7 @@
  * This file is part of the Mixin Auditor project, licensed under the
  * GNU Lesser General Public License v3.0
  *
- * Copyright (C) 2025  Fallen_Breath and contributors
+ * Copyright (C) 2026  Fallen_Breath and contributors
  *
  * Mixin Auditor is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -20,23 +20,14 @@
 
 package me.fallenbreath.mixinauditor.hooks;
 
-import me.fallenbreath.mixinauditor.impl.MixinAuditor;
-import me.fallenbreath.mixinauditor.impl.Properties;
-import me.fallenbreath.mixinauditor.impl.When;
-import me.fallenbreath.mixinauditor.utils.Once;
+import me.fallenbreath.mixinauditor.impl.AuditExecutionMonitor;
+import net.fabricmc.loader.api.entrypoint.PreLaunchEntrypoint;
 
-public class GameInitHook
+public class PreLaunchHook implements PreLaunchEntrypoint
 {
-	private static final Once callback = new Once(() ->
+	@Override
+	public void onPreLaunch()
 	{
-		if (Properties.isAuditEnabled() && When.get() == When.GAME_INIT)
-		{
-			MixinAuditor.run();
-		}
-	});
-
-	public static void onGameInit()
-	{
-		callback.run();
+		AuditExecutionMonitor.start();
 	}
 }

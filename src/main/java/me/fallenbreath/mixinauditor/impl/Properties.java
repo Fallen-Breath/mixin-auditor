@@ -23,7 +23,39 @@ package me.fallenbreath.mixinauditor.impl;
 public class Properties
 {
 	public static final String SWITCH = "mixinAuditor.audit";
+	public static final String ENSURE_AUDIT = "mixinAuditor.ensureAudit";
 	public static final String WHEN = "mixinAuditor.when";
 	public static final String EXIT = "mixinAuditor.exit";
 	public static final String FAIL_CODE = "mixinAuditor.failCode";
+
+	private static final int DEFAULT_FAIL_CODE = 19;
+
+	public static boolean isAuditEnabled()
+	{
+		return "true".equalsIgnoreCase(System.getProperty(SWITCH));
+	}
+
+	public static boolean shouldEnsureAudit()
+	{
+		return !"false".equalsIgnoreCase(System.getProperty(ENSURE_AUDIT));
+	}
+
+	public static int getFailCode()
+	{
+		String codeStr = System.getProperty(FAIL_CODE, "");
+		try
+		{
+			return Integer.parseInt(codeStr);
+		}
+		catch (NumberFormatException e)
+		{
+			return DEFAULT_FAIL_CODE;
+		}
+	}
+
+	public static int getShutdownFailCode()
+	{
+		int failCode = getFailCode();
+		return failCode >= 1 && failCode <= 255 ? failCode : DEFAULT_FAIL_CODE;
+	}
 }

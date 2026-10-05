@@ -27,25 +27,6 @@ import org.spongepowered.asm.mixin.MixinEnvironment;
 public class MixinAuditor
 {
 	private static final Logger LOGGER = LogManager.getLogger(MixinAuditor.class);
-	private static final int DEFAULT_FAIL_CODE = 19;
-
-	public static boolean isEnabled()
-	{
-		return "true".equalsIgnoreCase(System.getProperty(Properties.SWITCH));
-	}
-
-	public static int getFailCode()
-	{
-		String codeStr = System.getProperty(Properties.FAIL_CODE, "");
-		try
-		{
-			return Integer.parseInt(codeStr);
-		}
-		catch (NumberFormatException e)
-		{
-			return DEFAULT_FAIL_CODE;
-		}
-	}
 
 	public static void run()
 	{
@@ -70,7 +51,7 @@ public class MixinAuditor
 
 		if (exit)
 		{
-			System.exit(ok ? 0 : getFailCode());
+			System.exit(ok ? 0 : Properties.getFailCode());
 		}
 	}
 
@@ -84,6 +65,10 @@ public class MixinAuditor
 		{
 			LOGGER.error("Error when auditing mixin", t);
 			return false;
+		}
+		finally
+		{
+			AuditExecutionMonitor.onAuditExecuted();
 		}
 
 		LOGGER.info("Mixin environment audited successfully");

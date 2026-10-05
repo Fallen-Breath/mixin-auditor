@@ -77,9 +77,10 @@ Mixin auditor can be configured with java system property
 
 Available properties:
 
-| Property                | Description                                                                                                                                                                               |
-|-------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `mixinAuditor.audit`    | The main switch. Set it to `true` to enable mixin auditor, otherwise mixin auditor will do nothing                                                                                        |
-| `mixinAuditor.when`     | When will mixin auditor triggers. Options: `mod_init`, fabric's `ModInitializer#onInitialize` hook; `game_init`, when the game is initialized and is about to start . Default: `mod_init` |
-| `mixinAuditor.exit`     | If the Minecraft process should exit after auditing. Options: `true`, `false`, `on_fail`. Default: `true`                                                                                 |
-| `mixinAuditor.failCode` | The return code to be used on exit if audit failed. It should be a valid integer. Default: `19`                                                                                           |
+| Property                   | Description                                                                                                                                                                                                                       |
+|----------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `mixinAuditor.audit`       | The main switch. Set it to `true` to enable mixin auditor, otherwise mixin auditor will do nothing                                                                                                                                |
+| `mixinAuditor.ensureAudit` | When `mixinAuditor.audit` is enabled, if the process shuts down before audit is execute, halt the java process with code exit with `mixinAuditor.failCode` on jvm shutdown. Default: `true`. Set to `false` to disable this check |
+| `mixinAuditor.when`        | When will mixin auditor triggers. Options: `mod_init`, fabric's `ModInitializer#onInitialize` hook; `game_init`, when the game is initialized and is about to start . Default: `mod_init`                                         |
+| `mixinAuditor.exit`        | If the Minecraft process should exit after auditing. Options: `true`, `false`, `on_fail`. Default: `true`                                                                                                                         |
+| `mixinAuditor.failCode`    | The return code to be used on exit if audit failed. It should be a valid integer. Default: `19`                                                                                                                                   |
